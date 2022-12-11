@@ -16,7 +16,7 @@ Maria Selma Costa - 1715523
 
 A continuação vamos a detalhar os códigos que usamos para analisar os nossos dados.
 
-* Integração do Colab com o Google Drive
+* Integração do Colab com o Google Drive.
 
 ```python
 # Conectar com o drive da unesp
@@ -34,14 +34,14 @@ import seaborn as sns
 ```
 
 
-* Leitura dos dados, e armazenamento num dataframe
+* Leitura dos dados, e armazenamento num dataframe.
 
 ```python
 df = pd.read_csv('/content/drive/My Drive/UNIVESP/tcc/dados.csv')
 ```
 
 
-* Seleccionamos as variáveis que usaremos para o nosso estudo
+* Selecionamos as variáveis que usaremos para o nosso estudo.
 
 ```python
 df_subset = df[["('P1_a ', 'Idade')", "('P1_b ', 'Genero')", "('P1_e_a ', 'uf onde mora')", "('P1_h ', 'Nivel de Ensino')", "('P2_a ', 'Qual sua situação atual de trabalho?')", "('P2_f ', 'Cargo Atual')", "('P2_h ', 'Faixa salarial')", "('P2_g ', 'Nivel')"]]
