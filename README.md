@@ -48,7 +48,7 @@ df_subset = df[["('P1_a ', 'Idade')", "('P1_b ', 'Genero')", "('P1_e_a ', 'uf on
 ```
 
 
-*
+* Agrupamento dos estados por região.
 
 ```python
 uf_sudeste = df_subset_01[ (df_subset_01["('P1_e_a ', 'uf onde mora')"]  == 'SP') | 
@@ -89,7 +89,7 @@ uf_df =  df_subset_01[ (df_subset_01["('P1_e_a ', 'uf onde mora')"]  == 'DF') ]
 ```
 
 
-* Código para graficar a distribuição das idades em função do Estado do Brasil.
+* Código para graficar o box-plot das idades em função do Estado do Brasil.
 
 ```python
 df_subset_01 = df_subset[df_subset["('P1_e_a ', 'uf onde mora')"] != "Exterior"]
@@ -110,7 +110,7 @@ plt.tick_params(axis='both', which='major', labelsize=20)
 plt.show()
 ```
 
-* Código para graficar a distribuição do número de pessoas Masculinas ou Femininas em função do Estado do Brasil
+* Código para graficar o histograma do número de pessoas Masculinas ou Femininas em função dos estados do Brasil.
 
 ```python
 
@@ -131,17 +131,53 @@ ax.set(xlabel='UF', ylabel='Número de pesssoas')
 
 ```
 
-* 
+* Código para graficar o histograma do número de pessoas totais em função dos estados do Brasil.
 
 ```python
+
+df_subset_01 = df_subset[ (df_subset["('P1_b ', 'Genero')"] != "Outro") & (df_subset["('P1_e_a ', 'uf onde mora')"] != "Exterior")]
+
+ax = sns.histplot(data=df_subset_01, x="('P1_e_a ', 'uf onde mora')", bins=30)
+
+ax.set(xlabel='UF', ylabel='Número de pesssoas')
+
+plt.xlabel('UF', fontsize=26);
+plt.ylabel('Número de pessoas', fontsize=26);
+plt.tick_params(axis='both', which='major', labelsize=20)
+
 ```
 
-* 
+* Código para graficar o histograma dos salários.
 
 ```python
-```
+# Distribuição dos salarios em função sexo
+orden = ['Menos de R$ 1.000/mês', 
+         'de R$ 1.001/mês a R$ 2.000/mês', 
+       'de R$ 2.001/mês a R$ 3000/mês',
+         'de R$ 3.001/mês a R$ 4.000/mês',
+         'de R$ 4.001/mês a R$ 6.000/mês', 
+         'de R$ 6.001/mês a R$ 8.000/mês',
+       'de R$ 8.001/mês a R$ 12.000/mês',
+       'de R$ 12.001/mês a R$ 16.000/mês',
+       'de R$ 16.001/mês a R$ 20.000/mês', 
+       'de R$ 30.001/mês a R$ 40.000/mês',
+       'de R$ 20.001/mês a R$ 25.000/mês',
+       'de R$ 25.001/mês a R$ 30.000/mês',
+       'Acima de R$ 40.001/mês'
+       ]
 
-* 
+df_subset_01 = df_subset[ (df_subset["('P1_b ', 'Genero')"] != "Outro") & (df_subset["('P1_e_a ', 'uf onde mora')"] != "Exterior")]
 
-```python
+ax =sns.countplot(x ="('P2_h ', 'Faixa salarial')", hue = "('P1_b ', 'Genero')", data = df_subset_01, order = orden)
+
+ax.tick_params(axis='x', rotation=90, labelsize=20)
+ax.tick_params(axis='y', rotation=0, labelsize=20)
+
+#ax.set(xlabel='Faixa salarial', ylabel='Número de pessoas')
+
+plt.xlabel('Faixa salarial', fontsize=26);
+plt.ylabel('Número de pessoas', fontsize=26);
+
+
+plt.show()
 ```
